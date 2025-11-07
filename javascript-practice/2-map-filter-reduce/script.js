@@ -39,6 +39,7 @@ function filter(arr, cb) {
 
     for(let i = 0; i < arr.length; i++) {
         const isTrue = cb(arr[i], i, arr);
+        console.log(isTrue, "isTrue")
 
         if(isTrue) {
             filteredArr.push(arr[i])
@@ -49,7 +50,7 @@ function filter(arr, cb) {
 }
 
 const filterResult = filter(exampleArr, (item) => {
-    return item > 3
+    return item % 2 === 0
 })
 
 console.log(filterResult, "filterResult")

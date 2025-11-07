@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h2>Event capturing</h2>
+      <div id="outer">
+        <div id="middle">
+          <div id="inner">
+            <button id="btn">Click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Event bubbling</h2>
+      <div id="outer1">
+        <div id="middle1">
+          <div id="inner1">
+            <button id="btn">Click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+  <style>
+    #outer1 {
+      width: 200px;
+      background-color: red;
+      padding: 20px;
+    }
+    #middle1 {
+      background-color: green;
+      padding: 20px;
+    }
+    #inner1 {
+      background-color: blue;
+      padding: 20px;
+    }
+    #outer {
+      width: 200px;
+      background-color: red;
+      padding: 20px;
+    }
+    #middle {
+      background-color: green;
+      padding: 20px;
+    }
+    #inner {
+      background-color: blue;
+      padding: 20px;
+    }
+  </style>
+</html>
