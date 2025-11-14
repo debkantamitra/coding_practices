@@ -1,39 +1,65 @@
-function PromisePolyFill(executor) {
-    let onResolve, onReject, isFullfilled, isRejected, called, value;
+// function PromisePolyFill(executor) {
+//     let onResolve, onReject, isFullfilled, isRejected, called, value;
 
-    function resolve(value) {
-        isFullfilled = true;
+//     function resolve(value) {
+//         isFullfilled = true;
 
-        setTimeout(() => onResolve(value))
+//         setTimeout(() => onResolve(value))
+//     }
+
+//     function reject(value) {
+//         isRejected = true;
+
+//         setTimeout(() => onReject(value))
+//     }
+
+//     this.then = function(callback) {
+//         onResolve = callback;
+
+//         return this;
+//     }
+
+//     this.catch = function(callback) {
+//         onReject = callback;
+
+//         return this
+//     }
+
+//     executor(resolve, reject)
+// }
+
+// const examplePromise = new PromisePolyFill((resolve, reject) => {
+//         reject(2);
+// })
+
+// console.log(examplePromise)
+
+// examplePromise.then(console.log).catch(console.error)
+
+// console.log("end")
+
+
+
+class CustomPromise {   
+    constructor(executor) {
+        this.resolve = this.#_resolve.bind(this)
+        this.reject = this.#_reject.bind(this)
+
+        executor(this.resolve, this.reject)
     }
 
-    function reject(value) {
-        isRejected = true;
-
-        setTimeout(() => onReject(value))
+    #_resolve() {
+        console.log("this", this)
     }
 
-    this.then = function(callback) {
-        onResolve = callback;
-
-        return this;
+    #_reject() {
+      
     }
-
-    this.catch = function(callback) {
-        onReject = callback;
-
-        return this
-    }
-
-    executor(resolve, reject)
 }
 
-const examplePromise = new PromisePolyFill((resolve, reject) => {
-        reject(2);
-})
+function init() {
+    return new CustomPromise((resolve) => resolve(10))
+}
 
-console.log(examplePromise)
+init()
 
-examplePromise.then(console.log).catch(console.error)
-
-console.log("end")

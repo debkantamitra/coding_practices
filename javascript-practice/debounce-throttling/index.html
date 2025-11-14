@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce and Throttling</title>
+    <script src="./script-v2.js" defer></script>
+</head>
+<body>
+    <div class="debounce-example">
+        <button>
+            Increment
+        </button>
+
+        <p>Button Pressed <span id="pressedCount">0</span> Times</p>
+        <p>Triggered <span id="triggerCount">0</span></p>
+    </div>
+
+    <style>
+        button {
+            cursor: pointer;
+        }
+        .debounce-example {
+            text-align: center;
+            padding: 50px;
+            background-color: antiquewhite;
+            border-radius: 8px;
+        }
+    </style>
+</body>
+</html>

@@ -3,13 +3,17 @@
 
 // Explain "this" keyword?
 
-// this.a = 5;
+this.a = 5;
 
-// function getParam() {
-//     console.log(this.a);
-// }
+function getParamOuter() {
+    function getParam() {
+        console.log(this.a);
+    }
 
-// getParam();
+    getParam()
+}
+
+getParamOuter();
 
 // const user = {
 //     name: "John",
@@ -83,25 +87,25 @@
 
 // object.method(callback, 2, 3)
 
-const calc = {
-  total: 0,
-  add(num) {
-    this.total += num;
+// const calc = {
+//   total: 0,
+//   add(num) {
+//     this.total += num;
 
-    return this;
-  },
-  multiply(num) {
-    this.total *= num;
+//     return this;
+//   },
+//   multiply(num) {
+//     this.total *= num;
 
-    return this;
-  },
-  subtract(num) {
-    this.total -= num;
+//     return this;
+//   },
+//   subtract(num) {
+//     this.total -= num;
 
-    return this;
-  }
-}
+//     return this;
+//   }
+// }
 
-const result = calc.add(10).multiply(5).subtract(30).add(10);
+// const result = calc.add(10).multiply(5).subtract(30).add(10);
 
-console.log(result.total);
+// console.log(result.total);
