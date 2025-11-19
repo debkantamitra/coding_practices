@@ -1,25 +1,19 @@
 const gridOf = 3;
 const order = [];
 
-// TODO: below should be dynamically populated
-const grids = [
-  [
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-  ],
-  [
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-  ],
-  [
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-    { color: getRandomColor() },
-  ],
-];
+const grid = [];
 
+function createGrid() {
+  for (let i = 0; i < gridOf; i++) {
+    const row = [];
+
+    for (let j = 0; j < gridOf; j++) {
+      row.push({ color: getRandomColor() });
+    }
+
+    grid.push(row);
+  }
+}
 
 function getRandomColor() {
   var letters = "0123456789ABCDEF";
@@ -38,10 +32,10 @@ const handleBoxColor = (e) => {
   if (key) {
     order.push({
       key,
-      initialColor: grids[key[0]][key[1]].color,
+      initialColor: grid[key[0]][key[1]].color,
     });
 
-    grids[key[0]][key[1]].color = "white";
+    grid[key[0]][key[1]].color = "white";
   }
 
   renderBoxes();
@@ -52,14 +46,13 @@ const handleBoxColor = (e) => {
 };
 
 function handleLastBoxClick() {
-  order.forEach((item) => {
-
-    // TODO: The order timing is not working 
+  order.forEach((item, index) => {
+    // TODO: The order timing is not working
     setTimeout(() => {
-      grids[item.key[0]][item.key[1]].color = item.initialColor;
+      grid[item.key[0]][item.key[1]].color = item.initialColor;
 
       renderBoxes();
-    }, 3000);
+    }, 1000);
   });
 }
 
@@ -75,7 +68,7 @@ function renderBoxes() {
 
       column.setAttribute("data-key", `${i}${j}`);
       column.classList.add("column");
-      column.style.backgroundColor = grids[i][j].color;
+      column.style.backgroundColor = grid[i][j].color;
 
       row.appendChild(column);
     }
@@ -87,4 +80,5 @@ function renderBoxes() {
 const gridEle = document.getElementById("grid");
 gridEle.addEventListener("click", handleBoxColor);
 
+createGrid();
 renderBoxes();
