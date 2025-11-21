@@ -1,0 +1,47 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header, footer {
+    background-color: antiquewhite;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+aside {
+    padding: 20px;
+}
+
+.side-left {
+    background-color:yellow;
+}
+
+.side-right {
+    background-color:brown;
+}
+
+@media screen and (max-width: 488px) {
+    .container {
+        flex-direction: column;
+    }
+
+    /* TODO:: The content is overflowing */
+    .side-content, .main-content {
+        width: 100%;
+    }
+}
