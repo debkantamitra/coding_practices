@@ -25,6 +25,7 @@ main {
 
 aside {
     padding: 20px;
+    max-width: 10%;
 }
 
 .side-left {
@@ -39,9 +40,7 @@ aside {
     .container {
         flex-direction: column;
     }
-
-    /* TODO:: The content is overflowing */
-    .side-content, .main-content {
-        width: 100%;
+    aside {
+        max-width: none;
     }
 }
