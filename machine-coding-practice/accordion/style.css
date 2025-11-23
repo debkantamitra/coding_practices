@@ -1,0 +1,23 @@
+.content {
+    display: none;
+    padding: 10px;
+}
+
+.accordion-item {
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.accordion-item.active > .content {
+    display: block;
+}
+
+.title {
+    background-color: azure;
+    padding: 10px;
+}
+
+.accordion-item.active > .title {
+    background-color: aquamarine;
+}
