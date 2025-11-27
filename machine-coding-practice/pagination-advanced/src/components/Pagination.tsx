@@ -41,47 +41,84 @@ const Pagination = () => {
             <ProductCard {...prod} />
           ))}
       </div>
+      
       <div className="pagination">
-        <button
-          className="pagination_btn static"
-          onClick={() => {
-            if (currentPage === 1) {
-              setCurrentPage(totalPages);
-            } else {
-              setCurrentPage((prev) => prev - 1);
-            }
-          }}
-        >
-          Prev
-        </button>
+        {currentPage > 1 && (
+          <button
+            className="pagination_btn static"
+            onClick={() => {
+              if (currentPage === 1) {
+                setCurrentPage(totalPages);
+              } else {
+                setCurrentPage((prev) => prev - 1);
+              }
+            }}
+          >
+            Prev
+          </button>
+        )}
 
-        {products?.slice(0, 10).map((_, index) => {
+        {Array.from({ length: totalPages }).map((_, index) => {
           const pageNum = index + 1;
           const isActive = pageNum === currentPage;
 
-          return (
-            <button
-              className={`pagination_btn ${isActive ? "active" : ""}`}
-              onClick={() => setCurrentPage(pageNum)}
-              key={pageNum}
-            >
-              {pageNum}
-            </button>
-          );
+          if (index === 0) {
+            return (
+              <>
+                <button
+                  className={`pagination_btn ${isActive ? "active" : ""}`}
+                  onClick={() => setCurrentPage(pageNum)}
+                  key={pageNum}
+                >
+                  {pageNum}
+                </button>
+                {currentPage > 3 && "..."}
+              </>
+            );
+          }
+
+          if (index === totalPages - 1) {
+            return (
+              <>
+                {currentPage < totalPages - 2 && "..."}
+                <button
+                  className={`pagination_btn ${isActive ? "active" : ""}`}
+                  onClick={() => setCurrentPage(pageNum)}
+                  key={pageNum}
+                >
+                  {pageNum}
+                </button>
+              </>
+            );
+          }
+
+          if (pageNum >= currentPage - 2 && pageNum < currentPage + 3) {
+            return (
+              <button
+                className={`pagination_btn ${isActive ? "active" : ""}`}
+                onClick={() => setCurrentPage(pageNum)}
+                key={pageNum}
+              >
+                {pageNum}
+              </button>
+            );
+          }
         })}
 
-        <button
-          className="pagination_btn static"
-          onClick={() => {
-            if (currentPage === totalPages) {
-              setCurrentPage(1);
-            } else {
-              setCurrentPage((prev) => prev + 1);
-            }
-          }}
-        >
-          Next
-        </button>
+        {currentPage < totalPages && (
+          <button
+            className="pagination_btn static"
+            onClick={() => {
+              if (currentPage === totalPages) {
+                setCurrentPage(1);
+              } else {
+                setCurrentPage((prev) => prev + 1);
+              }
+            }}
+          >
+            Next
+          </button>
+        )}
       </div>
     </>
   );
