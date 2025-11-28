@@ -6,7 +6,7 @@ const PAGE_SIZE = 10;
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
   const [productList, setProductList] = useState<Product[] | null>(null);
   const skip = currentPage * PAGE_SIZE - PAGE_SIZE;
   const targetRef = useRef<HTMLDivElement>(null);
@@ -58,12 +58,18 @@ const App = () => {
     getProducts();
   }, [currentPage]);
 
-  return isFetching && !productList ? (
-    <div className="msg_container">Loading...</div>
-  ) : productList && productList?.length > 0 ? (
-    <ProductList products={productList} targetRef={targetRef} />
-  ) : (
-    <div className="msg_container">No products to show</div>
+  return (
+    <>
+      {productList && productList?.length > 0 ? (
+        <ProductList products={productList} targetRef={targetRef} />
+      ) : !isFetching && (
+        <div className="msg_container">No products to show</div>
+      )}
+
+      {isFetching && (
+        <div className="msg_container">Loading...</div>
+      )}
+    </>
   );
 };
 
