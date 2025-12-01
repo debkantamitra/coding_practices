@@ -52,7 +52,7 @@ const App = () => {
         if (targetRef.current) observer.unobserve(targetRef.current);
       };
     }
-  }, [targetRef.current]);
+  }, [productList]);
 
   useEffect(() => {
     getProducts();
