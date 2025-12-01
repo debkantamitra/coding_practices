@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+    <title>Configurable Color Boxes</title>
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <!-- use "event" to pass as param - not "e" or anything -->
+    <form class="input_form" onsubmit="handleInput(event)">
+      <input type="text" name="width" placeholder="Width in %" required />
+      <input type="text" name="color" placeholder="Color e.g. red" required />
+      <button type="submit">Render</button>
+    </form>
+  </body>
+</html>
