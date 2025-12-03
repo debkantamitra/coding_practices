@@ -1,10 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
 
 const AppLayout = () => {
   return (
     <div>
-      <header>React Router Dom Tutorial</header>
+      <h1>React Router Dom Tutorial</h1>
+      <Header />
       {/* loading */}
       <Outlet />
     </div>
