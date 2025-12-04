@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./layouts/app-layout";
 import Home from "./pages/home";
-import Posts from "./pages/posts";
+import Posts, { postLoader } from "./pages/posts";
 import PostFeed from "./pages/post-feed";
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
         {
           path: "/posts",
           element: <Posts />,
+          loader: postLoader
         },
         {
           path: "/posts/:id",
