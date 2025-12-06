@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink as Link } from "react-router-dom";
+import { NavLink as Link, NavLinkRenderProps } from "react-router-dom";
 
 const Header = () => {
   // having a separate function because this is being reused in both the links
-  const classNameHandler = ({ isActive, isTransitioning, isPending }) =>
+  const classNameHandler = ({ isActive, isTransitioning, isPending }: NavLinkRenderProps) =>
     [
       isActive ? "isActive" : "",
       isPending ? "isPending" : "",
