@@ -1,0 +1,16 @@
+.outer {
+  position: relative;
+  border: 1px solid gray;
+  border-radius: 12px;
+  width: 500px;
+  margin: 8px;
+  text-align: center;
+  height: 40px;
+  overflow: hidden;
+}
+
+.progress-count {
+  position: absolute;
+  z-index: 1000;
+  margin-top: 10px;
+}
