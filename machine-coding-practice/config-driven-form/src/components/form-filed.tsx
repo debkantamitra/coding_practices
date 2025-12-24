@@ -1,7 +1,11 @@
 import React from "react";
 
-const FormField = () => {
-  // conditionally takes the input Field
+const componentMapping = {
+  TEXT_FEILD: () => {},
+};
+
+const FormField = ({ field, onChange }) => {
+  const Component = componentMapping[field.component];
 
   return <div>form-filed</div>;
 };
